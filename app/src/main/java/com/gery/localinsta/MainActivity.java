@@ -1,18 +1,24 @@
 package com.gery.localinsta;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import com.gery.localinsta.ui.activities.BaseActivity;
+import com.gery.localinsta.ui.presenters.BasePresenter;
+import com.gery.localinsta.ui.presenters.MainActivityPresenter;
+import com.gery.localinsta.ui.views.MainActivityView;
+
+import butterknife.BindView;
+
+public class MainActivity extends BaseActivity<MainActivityPresenter> implements MainActivityView {
+
+    @BindView(R.id.toolbar) Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
 
@@ -33,5 +39,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected MainActivityPresenter createPresenter() {
+        return MainActivityPresenter.newInstance();
     }
 }

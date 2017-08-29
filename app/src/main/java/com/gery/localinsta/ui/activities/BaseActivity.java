@@ -25,7 +25,6 @@ import retrofit2.Response;
 public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity
         implements BaseView, LoadingCallback, ErrorCallback {
 
-    public static final int UNAUTHORIZED_ERROR_CODE = 401;
     AlertDialog loadingIndicator;
     private P presenter;
     private Unbinder unbinder;
