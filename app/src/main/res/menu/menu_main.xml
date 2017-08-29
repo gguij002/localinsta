@@ -1,9 +1,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.gery.localinsta.MainActivity">
+    tools:context="com.gery.localinsta.ui.activities.MainActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/view_type"
         android:orderInCategory="100"
         android:title="@string/action_settings"
         android:icon="@drawable/li_view_comfy"

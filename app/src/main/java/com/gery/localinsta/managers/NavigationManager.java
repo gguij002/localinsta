@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.gery.localinsta.R;
+import com.gery.localinsta.ui.fragments.MainActivityFragment;
 
 /**
  * Created by gguij002 on 6/1/17.
@@ -95,5 +96,9 @@ public class NavigationManager {
         }
 
         transaction.commit();
+    }
+
+    public void showMainActivityFragment() {
+        showFragment(MainActivityFragment.newInstance(), false);
     }
 }

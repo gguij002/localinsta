@@ -1,12 +1,12 @@
-package com.gery.localinsta;
+package com.gery.localinsta.ui.activities;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.gery.localinsta.ui.activities.BaseActivity;
-import com.gery.localinsta.ui.presenters.BasePresenter;
+import com.gery.localinsta.R;
+import com.gery.localinsta.managers.NavigationManager;
 import com.gery.localinsta.ui.presenters.MainActivityPresenter;
 import com.gery.localinsta.ui.views.MainActivityView;
 
@@ -20,6 +20,8 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setSupportActionBar(toolbar);
+
+        NavigationManager.newInstance(this).showMainActivityFragment();
     }
 
     @Override
@@ -34,7 +36,7 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.view_type) {
             return true;
         }
 
