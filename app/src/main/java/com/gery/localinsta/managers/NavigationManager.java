@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.gery.localinsta.R;
+import com.gery.localinsta.model.rest.response.NetworkResponse;
 import com.gery.localinsta.ui.fragments.MainFragment;
 
 /**
@@ -100,5 +101,9 @@ public class NavigationManager {
 
     public void showMainActivityFragment() {
         showFragment(MainFragment.newInstance(), false);
+    }
+
+    public void sendToItemDetailsActivity(NetworkResponse networkResponse) {
+
     }
 }

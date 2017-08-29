@@ -1,5 +1,7 @@
 package com.gery.localinsta.managers;
 
+import com.gery.localinsta.model.rest.response.NetworkResponse;
+
 import io.realm.Realm;
 
 /**
@@ -26,5 +28,9 @@ public class RealmManager {
 
     public void wipeDb() {
         realm.executeTransaction(realm1 -> realm1.deleteAll());
+    }
+
+    public void saveInstas(NetworkResponse instas) {
+
     }
 }
