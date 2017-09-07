@@ -25,20 +25,4 @@ public class MainActivityPresenter extends BasePresenter<MainActivityView> {
     public static MainActivityPresenter newInstance() {
         return new MainActivityPresenter();
     }
-
-    public void fetchRecentMediaByOwner() {
-        Disposable disposable = ApiManager.fetchRecentMediaByOwner(1)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(response -> {
-                    if (isResponseSuccessful(response)) {
-                        Log.d("Response", response.toString());
-                        NetworkResponse body = response.body();
-                    } else {
-                        getView().showError(response);
-                    }
-                }, throwable -> {
-                    throwable.printStackTrace();
-                });
-        disposables.add(disposable);
-    }
 }

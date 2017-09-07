@@ -86,9 +86,4 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
         String url = "https://api.instagram.com/oauth/authorize/?client_id="+clientToken+"&redirect_uri=http://localmoments.com&response_type=token";
         navigationManager.openUrl(url);
     }
-
-    @OnClick(R.id.location_searching_text)
-    public void onLocationSearchingText() {
-        getPresenter().fetchRecentMediaByOwner();
-    }
 }

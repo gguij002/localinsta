@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.gery.localinsta.R;
 import com.gery.localinsta.model.rest.response.Datum;
@@ -22,6 +23,8 @@ public class InstasHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.insta_image)
     ImageView profilePic;
+    @BindView(R.id.caption)
+    TextView caption;
 
     private Datum data;
 
@@ -39,6 +42,7 @@ public class InstasHolder extends RecyclerView.ViewHolder {
     public void onBind(Datum message, ListItemClickListener<Datum> listener) {
         this.data = message;
 
+        caption.setText(data.getCaption().getText());
         itemView.setOnClickListener(view -> {
             listener.onItemClicked(data);
         });
