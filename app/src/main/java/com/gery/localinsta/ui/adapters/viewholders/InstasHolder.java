@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.gery.localinsta.R;
+import com.gery.localinsta.model.rest.response.Datum;
 import com.gery.localinsta.model.rest.response.NetworkResponse;
 import com.gery.localinsta.ui.adapters.listener.ListItemClickListener;
 
@@ -22,7 +23,7 @@ public class InstasHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.insta_image)
     ImageView profilePic;
 
-    private NetworkResponse data;
+    private Datum data;
 
 
     public InstasHolder(View itemView) {
@@ -35,7 +36,7 @@ public class InstasHolder extends RecyclerView.ViewHolder {
         return inflater.inflate(R.layout.insta_large_view, parent, false);
     }
 
-    public void onBind(NetworkResponse message, ListItemClickListener<NetworkResponse> listener) {
+    public void onBind(Datum message, ListItemClickListener<Datum> listener) {
         this.data = message;
 
         itemView.setOnClickListener(view -> {

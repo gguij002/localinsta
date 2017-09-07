@@ -9,9 +9,7 @@ import retrofit2.http.Query;
 
 public interface LiApiService {
 
-    @GET("media/search")
-    Single<Response<NetworkResponse>> fetchInstas(@Query("LAT") double lat,
-                                                  @Query("LNG") double lng,
-                                                  @Query("DISTANCE") int distance);
-
+    @GET("users/self/media/recent")
+    Single<Response<NetworkResponse>> fetchRecentMediaByOwner(@Query("access_token") String accessToken,
+                                                              @Query("count") int count);
 }

@@ -1,5 +1,6 @@
 package com.gery.localinsta.model.rest;
 
+import com.gery.localinsta.managers.PreferencesManager;
 import com.gery.localinsta.model.rest.response.NetworkResponse;
 
 import io.reactivex.Single;
@@ -11,7 +12,8 @@ import retrofit2.Response;
 
 public class ApiManager {
 
-    public static Single<Response<NetworkResponse>> fetchInstas(double lat, double lng, int distance) {
-        return LiService.getInstance().fetchInstas(lat, lng, distance);
+    public static Single<Response<NetworkResponse>> fetchRecentMediaByOwner(int count) {
+        String authToken = PreferencesManager.getInstance().getAuthToken();
+        return LiService.getInstance().fetchRecentMediaByOwner(authToken, count);
     }
 }

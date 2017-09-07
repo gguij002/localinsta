@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.gery.localinsta.R;
 import com.gery.localinsta.managers.NavigationManager;
@@ -96,6 +97,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     @Override
     public void showError(Response<?> errorResponse) {
         //TODO
+        Log.d("Error", errorResponse.toString());
     }
 
     public void setActionBarTitle(String title) {

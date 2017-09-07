@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.gery.localinsta.R;
 import com.gery.localinsta.managers.NavigationManager;
+import com.gery.localinsta.model.rest.response.Datum;
 import com.gery.localinsta.model.rest.response.NetworkResponse;
 import com.gery.localinsta.ui.adapters.InstasAdapter;
 import com.gery.localinsta.ui.adapters.listener.ListItemClickListener;
@@ -28,7 +29,7 @@ public class MainFragment extends BaseFragment<MainFragmentPresenter> implements
     }
 
     @Override
-    public void setUpRecyclerView(RealmResults<NetworkResponse> messages) {
+    public void setUpRecyclerView(RealmResults<Datum> messages) {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),
                 LinearLayoutManager.VERTICAL,
@@ -44,15 +45,15 @@ public class MainFragment extends BaseFragment<MainFragmentPresenter> implements
     }
 
     @NonNull
-    private ListItemClickListener<NetworkResponse> itemClickListener() {
-        return new ListItemClickListener<NetworkResponse>() {
+    private ListItemClickListener<Datum> itemClickListener() {
+        return new ListItemClickListener<Datum>() {
             @Override
-            public void onItemClicked(NetworkResponse networkResponse) {
+            public void onItemClicked(Datum networkResponse) {
                 navigationManager.sendToItemDetailsActivity(networkResponse);
             }
 
             @Override
-            public void onItemLongClicked(NetworkResponse networkResponse) {
+            public void onItemLongClicked(Datum networkResponse) {
 
             }
         };

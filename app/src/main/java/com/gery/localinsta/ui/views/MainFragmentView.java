@@ -1,5 +1,6 @@
 package com.gery.localinsta.ui.views;
 
+import com.gery.localinsta.model.rest.response.Datum;
 import com.gery.localinsta.model.rest.response.NetworkResponse;
 
 import io.realm.RealmResults;
@@ -10,7 +11,7 @@ import io.realm.RealmResults;
 
 public interface MainFragmentView extends BaseView {
 
-    void setUpRecyclerView(RealmResults<NetworkResponse> inboxItems);
+    void setUpRecyclerView(RealmResults<Datum> inboxItems);
 
     void instasLoaded();
 }

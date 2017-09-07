@@ -24,25 +24,6 @@ public class MainFragmentPresenter extends BasePresenter<MainFragmentView> {
 
     }
 
-    public void fetchInstas(double lat, double lng, int distance) {
-        Disposable disposable = ApiManager.fetchInstas(lat, lng, distance)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(response -> {
-                    if (isResponseSuccessful(response)) {
-                        NetworkResponse body = response.body();
-
-                        realmManager.saveInstas(body);
-
-                        getView().instasLoaded();
-                    } else {
-                        getView().showError(response);
-                    }
-                }, throwable -> {
-                    throwable.printStackTrace();
-                });
-        disposables.add(disposable);
-    }
-
     public void onScroll(LinearLayoutManager layoutManager) {
 
     }
