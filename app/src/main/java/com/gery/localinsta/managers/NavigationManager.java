@@ -1,6 +1,9 @@
 package com.gery.localinsta.managers;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.gery.localinsta.R;
 import com.gery.localinsta.model.rest.response.NetworkResponse;
 import com.gery.localinsta.ui.fragments.MainFragment;
+import com.gery.localinsta.utils.FormatUtils;
 
 /**
  * Created by gguij002 on 6/1/17.
@@ -105,5 +109,19 @@ public class NavigationManager {
 
     public void sendToItemDetailsActivity(NetworkResponse networkResponse) {
 
+    }
+
+    public void openUrl(String url) throws ActivityNotFoundException {
+        if (url == null) {
+            return;
+        }
+        url = FormatUtils.addHttpProtocolToUrl(url);
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        if (!(context instanceof AppCompatActivity) || context.getPackageManager().resolveActivity(intent, intent.getFlags()) == null) {
+            throw new ActivityNotFoundException("No browser installed");
+        }
+        context.startActivity(intent);
     }
 }

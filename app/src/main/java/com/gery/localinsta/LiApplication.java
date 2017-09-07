@@ -22,6 +22,7 @@ public class LiApplication extends Application {
 
         Realm.init(context);
         RealmConfiguration realmConfig = new RealmConfiguration.Builder()
+                .deleteRealmIfMigrationNeeded()
                 .build();
 
         Realm.setDefaultConfiguration(realmConfig);
