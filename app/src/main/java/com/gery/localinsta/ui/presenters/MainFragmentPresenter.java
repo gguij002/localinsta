@@ -3,7 +3,6 @@ package com.gery.localinsta.ui.presenters;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 
-import com.gery.localinsta.managers.RealmManager;
 import com.gery.localinsta.model.rest.ApiManager;
 import com.gery.localinsta.model.rest.response.Datum;
 import com.gery.localinsta.model.rest.response.NetworkResponse;
@@ -34,7 +33,7 @@ public class MainFragmentPresenter extends BasePresenter<MainFragmentView> {
     }
 
     public void fetchRecentMediaByOwner() {
-        Disposable disposable = ApiManager.fetchRecentMediaByOwner(1)
+        Disposable disposable = ApiManager.fetchRecentMediaByOwner(2)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
                     if (isResponseSuccessful(response)) {

@@ -7,9 +7,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.gery.localinsta.LiApplication;
 import com.gery.localinsta.R;
 import com.gery.localinsta.model.rest.response.Datum;
-import com.gery.localinsta.model.rest.response.NetworkResponse;
 import com.gery.localinsta.ui.adapters.listener.ListItemClickListener;
 
 import butterknife.BindView;
@@ -22,7 +23,7 @@ import butterknife.ButterKnife;
 public class InstasHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.insta_image)
-    ImageView profilePic;
+    ImageView image;
     @BindView(R.id.caption)
     TextView caption;
 
@@ -46,5 +47,9 @@ public class InstasHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(view -> {
             listener.onItemClicked(data);
         });
+
+        Glide.with(LiApplication.getContext())
+                .load(data.getImages().getStandardResolution().getUrl())
+                .into(image);
     }
 }
