@@ -84,6 +84,7 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
     public void onLocationClick() {
         String clientToken = getString(R.string.insta_client_token);
         String url = "https://api.instagram.com/oauth/authorize/?client_id="+clientToken+"&redirect_uri=http://localmoments.com&response_type=token";
+        Log.d("URL", url);
         navigationManager.openUrl(url);
     }
 }
