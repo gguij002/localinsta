@@ -8,6 +8,7 @@ import java.util.List;
 import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmResults;
+import io.realm.Sort;
 
 /**
  * Created by gguij002 on 7/3/17.
@@ -42,6 +43,6 @@ public class RealmManager {
     }
 
     public RealmResults<Datum> getInstas() {
-        return realm.where(Datum.class).findAllSorted("createdTime");
+        return realm.where(Datum.class).findAllSorted("createdTime", Sort.DESCENDING);
     }
 }

@@ -4,12 +4,12 @@
     xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     android:layout_marginTop="0dp"
     app:cardCornerRadius="2dp"
-    app:cardElevation="2dp"
+    app:cardElevation="4dp"
     card_view:cardUseCompatPadding="true">
 
     <LinearLayout
@@ -20,7 +20,7 @@
         <ImageView
             android:id="@+id/insta_image"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="180dp"
             android:scaleType="fitXY"/>
 
         <TextView

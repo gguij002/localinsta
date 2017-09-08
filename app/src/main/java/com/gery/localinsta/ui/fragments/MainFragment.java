@@ -37,15 +37,11 @@ public class MainFragment extends BaseFragment<MainFragmentPresenter> implements
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),
                 LinearLayoutManager.VERTICAL,
-                true);
+                false);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new InstasAdapter(messages, itemClickListener());
         recyclerView.setAdapter(adapter);
         recyclerView.addOnScrollListener(listOnScroll(layoutManager));
-
-        messages.addChangeListener(element -> {
-            recyclerView.scrollToPosition(0);
-        });
     }
 
     @NonNull
