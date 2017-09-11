@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -23,9 +24,56 @@
             android:layout_height="180dp"
             android:scaleType="fitXY" />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/user_photo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="John Snow"
+                android:textColor="@color/li_black"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/user_photo"
+                />
+
+            <ImageView
+                android:id="@+id/location_marker"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_below="@+id/user_name"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/user_photo"
+                android:src="@drawable/li_location_searching"
+                />
+
+            <TextView
+                android:id="@+id/distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="50m from you"
+                android:layout_below="@+id/user_name"
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@+id/location_marker"
+                />
+
+        </RelativeLayout>
+
         <TextView
             android:id="@+id/caption"
-            android:layout_margin="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>

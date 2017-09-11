@@ -24,8 +24,12 @@ public class InstasHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.insta_image)
     ImageView image;
+    @BindView(R.id.user_photo)
+    ImageView userPhoto;
     @BindView(R.id.caption)
     TextView caption;
+    @BindView(R.id.user_name)
+    TextView userName;
 
     private Datum data;
 
@@ -43,7 +47,9 @@ public class InstasHolder extends RecyclerView.ViewHolder {
     public void onBind(Datum message, ListItemClickListener<Datum> listener) {
         this.data = message;
 
+        userName.setText(data.getUser().getUsername());
         caption.setText(data.getCaption().getText());
+
         itemView.setOnClickListener(view -> {
             listener.onItemClicked(data);
         });
@@ -51,5 +57,9 @@ public class InstasHolder extends RecyclerView.ViewHolder {
         Glide.with(LiApplication.getContext())
                 .load(data.getImages().getStandardResolution().getUrl())
                 .into(image);
+
+        Glide.with(LiApplication.getContext())
+                .load(data.getUser().getProfilePicture())
+                .into(userPhoto);
     }
 }
