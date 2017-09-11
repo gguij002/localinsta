@@ -15,7 +15,6 @@ import com.gery.localinsta.ui.adapters.listener.ListItemClickListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Optional;
 import io.reactivex.annotations.Nullable;
 
 import static com.gery.localinsta.ui.adapters.InstasAdapter.HEADER_VIEW;
@@ -26,6 +25,7 @@ import static com.gery.localinsta.ui.adapters.InstasAdapter.HEADER_VIEW;
 
 public class InstasHolder extends RecyclerView.ViewHolder {
 
+    private final boolean gridView;
     @Nullable
     @BindView(R.id.insta_image)
     ImageView image;
@@ -45,26 +45,41 @@ public class InstasHolder extends RecyclerView.ViewHolder {
     private Datum data;
 
 
-    public InstasHolder(View itemView) {
+    public InstasHolder(View itemView, boolean gridView) {
         super(itemView);
+        this.gridView = gridView;
         ButterKnife.bind(this, itemView);
     }
 
-    public static View inflateView(ViewGroup parent, int viewType) {
-        if (viewType == 0) {
+    public static View inflateView(ViewGroup parent, int viewType, boolean gridView) {
+        View view;
+        if (viewType == HEADER_VIEW) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            return inflater.inflate(R.layout.list_header, parent, false);
+            view = inflater.inflate(R.layout.list_header, parent, false);
+        } else if (gridView) {
+            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+            view = inflater.inflate(R.layout.list_item_grid_view, parent, false);
         } else {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            return inflater.inflate(R.layout.insta_large_view, parent, false);
+            view = inflater.inflate(R.layout.list_item_regular_view, parent, false);
         }
+        return view;
     }
 
     public void onBind(Datum message, ListItemClickListener<Datum> listener) {
         this.data = message;
 
+
         if (getItemViewType() == HEADER_VIEW) {
             locationName.setText(LiApplication.getContext().getString(R.string.posts_near_you));
+            return;
+        }
+
+        Glide.with(LiApplication.getContext())
+                .load(data.getImages().getStandardResolution().getUrl())
+                .into(image);
+
+        if (gridView) {
             return;
         }
 
@@ -74,10 +89,6 @@ public class InstasHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(view -> {
             listener.onItemClicked(data);
         });
-
-        Glide.with(LiApplication.getContext())
-                .load(data.getImages().getStandardResolution().getUrl())
-                .into(image);
 
         Glide.with(LiApplication.getContext())
                 .load(data.getUser().getProfilePicture())

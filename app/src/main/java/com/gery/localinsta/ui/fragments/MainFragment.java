@@ -1,6 +1,7 @@
 package com.gery.localinsta.ui.fragments;
 
 import android.support.annotation.NonNull;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -30,12 +31,13 @@ public class MainFragment extends BaseFragment<MainFragmentPresenter> implements
 
     @Override
     public void setUpRecyclerView(RealmResults<Datum> messages) {
+
+        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),2, LinearLayoutManager.VERTICAL, false);
+
         recyclerView.setHasFixedSize(true);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),
-                LinearLayoutManager.VERTICAL,
-                false);
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new InstasAdapter(messages, itemClickListener());
+        adapter = new InstasAdapter(messages, itemClickListener(), true);
         recyclerView.setAdapter(adapter);
         recyclerView.addOnScrollListener(listOnScroll(layoutManager));
     }

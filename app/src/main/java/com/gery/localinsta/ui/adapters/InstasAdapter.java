@@ -17,18 +17,20 @@ public class InstasAdapter extends RealmRecyclerViewAdapter<Datum, InstasHolder>
 
     public static final int HEADER_VIEW = 0;
     private static final int CELL_VIEW = 1;
+    private final boolean gridView;
     private ListItemClickListener<Datum> itemClickListener;
 
-    public InstasAdapter(OrderedRealmCollection<Datum> data, ListItemClickListener<Datum> listener) {
+    public InstasAdapter(OrderedRealmCollection<Datum> data, ListItemClickListener<Datum> listener, boolean gridView) {
         super(data, true);
         this.itemClickListener = listener;
+        this.gridView = gridView;
         setHasStableIds(true);
     }
 
     @Override
     public InstasHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = InstasHolder.inflateView(parent, viewType);
-        return new InstasHolder(view);
+        View view = InstasHolder.inflateView(parent, viewType, gridView);
+        return new InstasHolder(view, gridView);
     }
 
     @Override
