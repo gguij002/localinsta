@@ -4,4 +4,5 @@
     <string name="my_location">My Location</string>
     <string name="insta_client_token">bd3b08ba0b5b4bb0b485bac872b5fc60</string>
     <string name="fetch_data">Fetch Data</string>
+    <string name="posts_near_you">Posts Near You</string>
 </resources>

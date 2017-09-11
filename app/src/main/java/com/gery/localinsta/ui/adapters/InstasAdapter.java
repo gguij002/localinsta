@@ -15,6 +15,8 @@ import io.realm.OrderedRealmCollection;
 
 public class InstasAdapter extends RealmRecyclerViewAdapter<Datum, InstasHolder> {
 
+    public static final int HEADER_VIEW = 0;
+    private static final int CELL_VIEW = 1;
     private ListItemClickListener<Datum> itemClickListener;
 
     public InstasAdapter(OrderedRealmCollection<Datum> data, ListItemClickListener<Datum> listener) {
@@ -25,7 +27,7 @@ public class InstasAdapter extends RealmRecyclerViewAdapter<Datum, InstasHolder>
 
     @Override
     public InstasHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = InstasHolder.inflateView(parent);
+        View view = InstasHolder.inflateView(parent, viewType);
         return new InstasHolder(view);
     }
 
@@ -37,8 +39,16 @@ public class InstasAdapter extends RealmRecyclerViewAdapter<Datum, InstasHolder>
     }
 
     @Override
+    public int getItemViewType(int position) {
+        if (position == 0) {
+            return HEADER_VIEW;
+        } else {
+            return CELL_VIEW;
+        }
+    }
+
+    @Override
     public long getItemId(int index) {
-        Datum item = getItem(index);
         return index;
     }
 }
