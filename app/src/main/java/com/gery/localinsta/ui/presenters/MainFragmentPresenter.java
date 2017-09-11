@@ -26,6 +26,12 @@ public class MainFragmentPresenter extends BasePresenter<MainFragmentView> {
     public void init() {
         RealmResults<Datum> instas = realmManager.getInstas();
         getView().setUpRecyclerView(instas);
+        fetchRecentMediaByOwner();
+    }
+
+    @Override
+    public void resume() {
+        super.resume();
     }
 
     public void onScroll(LinearLayoutManager layoutManager) {

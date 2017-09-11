@@ -4,25 +4,20 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
 
 import com.gery.localinsta.R;
-import com.gery.localinsta.managers.NavigationManager;
 import com.gery.localinsta.model.rest.response.Datum;
-import com.gery.localinsta.model.rest.response.NetworkResponse;
 import com.gery.localinsta.ui.adapters.InstasAdapter;
 import com.gery.localinsta.ui.adapters.listener.ListItemClickListener;
 import com.gery.localinsta.ui.presenters.MainFragmentPresenter;
 import com.gery.localinsta.ui.views.MainFragmentView;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 import io.realm.RealmResults;
 
 public class MainFragment extends BaseFragment<MainFragmentPresenter> implements MainFragmentView {
 
     @BindView(R.id.recycler_view) RecyclerView recyclerView;
-    @BindView(R.id.fetch_data) Button fetchDataButton;
     private InstasAdapter adapter;
 
     public static MainFragment newInstance() {
@@ -59,11 +54,6 @@ public class MainFragment extends BaseFragment<MainFragmentPresenter> implements
         };
     }
 
-    @OnClick(R.id.fetch_data)
-    public void fetchData() {
-        getPresenter().fetchRecentMediaByOwner();
-    }
-
     private RecyclerView.OnScrollListener listOnScroll(final LinearLayoutManager layoutManager) {
         return new RecyclerView.OnScrollListener() {
             @Override
@@ -78,7 +68,6 @@ public class MainFragment extends BaseFragment<MainFragmentPresenter> implements
 
     @Override
     public void instasLoaded() {
-        fetchDataButton.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
     }
 

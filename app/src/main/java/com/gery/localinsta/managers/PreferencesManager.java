@@ -29,14 +29,14 @@ public class PreferencesManager {
         return sharedPreferences.getString(TOKEN, null);
     }
 
+    public boolean isAuthTokenSet() {
+        return getAuthToken() != null;
+    }
+
     public void setAuthToken(String authorization) {
         SharedPreferences.Editor editor = getEditor();
         editor.putString(TOKEN, authorization);
         editor.apply();
-    }
-
-    public void resetAuthToken() {
-        setAuthToken(PreferencesManager.TOKEN);
     }
 
     private SharedPreferences.Editor getEditor() {

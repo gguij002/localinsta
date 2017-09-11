@@ -16,7 +16,6 @@ import com.gery.localinsta.ui.presenters.MainActivityPresenter;
 import com.gery.localinsta.ui.views.MainActivityView;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity<MainActivityPresenter> implements MainActivityView {
 
@@ -27,15 +26,20 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setSupportActionBar(toolbar);
-
-        NavigationManager.newInstance(this).showMainActivityFragment();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        grabAuthToken();
+        //Intent carries the token, grab it
+        if (getIntent().getData() != null) {
+            grabAuthToken();
+        } else if (!PreferencesManager.getInstance().isAuthTokenSet()) { //No intent data, Is token already set?
+            requestInstagramAuth(); //No, ok fetch it
+        } else {
+            authTokenIsAlreadySet(); //Yes, send to list fragment
+        }
     }
 
     private void grabAuthToken() {
@@ -48,7 +52,18 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
             PreferencesManager.getInstance().setAuthToken(token);
             Log.d("URL", data.toString());
             Log.d("TOKEN", token);
+            authTokenIsAlreadySet();
         }
+    }
+
+    public void requestInstagramAuth() {
+        String clientToken = getString(R.string.insta_client_token);
+        String url = "https://api.instagram.com/oauth/authorize/?client_id="+clientToken+"&redirect_uri=http://localmoments.com&response_type=token";
+        navigationManager.openUrl(url);
+    }
+
+    public void authTokenIsAlreadySet() {
+        NavigationManager.newInstance(this).showMainActivityFragment();
     }
 
     @Override
@@ -78,13 +93,5 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
     @Override
     protected MainActivityPresenter createPresenter() {
         return MainActivityPresenter.newInstance();
-    }
-
-    @OnClick(R.id.location_text)
-    public void onLocationClick() {
-        String clientToken = getString(R.string.insta_client_token);
-        String url = "https://api.instagram.com/oauth/authorize/?client_id="+clientToken+"&redirect_uri=http://localmoments.com&response_type=token";
-        Log.d("URL", url);
-        navigationManager.openUrl(url);
     }
 }

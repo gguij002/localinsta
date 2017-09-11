@@ -25,6 +25,7 @@ public class NavigationManager {
 
     private static final int DEFAULT_LAYOUT = 0;
 
+
     private Context context;
 
     private NavigationManager(Context context) {
