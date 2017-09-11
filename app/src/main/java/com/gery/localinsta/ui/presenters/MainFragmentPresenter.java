@@ -18,6 +18,8 @@ import io.realm.RealmResults;
 
 public class MainFragmentPresenter extends BasePresenter<MainFragmentView> {
 
+    private static final int NUMBER_OF_ITEMS = 10;
+
     public static MainFragmentPresenter newInstance() {
         return new MainFragmentPresenter();
     }
@@ -39,7 +41,7 @@ public class MainFragmentPresenter extends BasePresenter<MainFragmentView> {
     }
 
     public void fetchRecentMediaByOwner() {
-        Disposable disposable = ApiManager.fetchRecentMediaByOwner(2)
+        Disposable disposable = ApiManager.fetchRecentMediaByOwner(NUMBER_OF_ITEMS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
                     if (isResponseSuccessful(response)) {
