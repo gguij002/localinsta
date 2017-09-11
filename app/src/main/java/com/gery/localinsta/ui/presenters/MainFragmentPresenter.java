@@ -1,6 +1,7 @@
 package com.gery.localinsta.ui.presenters;
 
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.gery.localinsta.model.rest.ApiManager;
@@ -19,15 +20,20 @@ import io.realm.RealmResults;
 public class MainFragmentPresenter extends BasePresenter<MainFragmentView> {
 
     private static final int NUMBER_OF_ITEMS = 10;
+    private final boolean gridView;
 
-    public static MainFragmentPresenter newInstance() {
-        return new MainFragmentPresenter();
+    public MainFragmentPresenter(boolean gridView) {
+        this.gridView = gridView;
+    }
+
+    public static MainFragmentPresenter newInstance(boolean gridView) {
+        return new MainFragmentPresenter(gridView);
     }
 
     @Override
     public void init() {
         RealmResults<Datum> instas = realmManager.getInstas();
-        getView().setUpRecyclerView(instas);
+        getView().setUpRecyclerView(instas, gridView);
         fetchRecentMediaByOwner();
     }
 
@@ -36,7 +42,7 @@ public class MainFragmentPresenter extends BasePresenter<MainFragmentView> {
         super.resume();
     }
 
-    public void onScroll(LinearLayoutManager layoutManager) {
+    public void onScroll(RecyclerView.LayoutManager layoutManager) {
 
     }
 

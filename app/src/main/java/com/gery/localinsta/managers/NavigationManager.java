@@ -104,8 +104,8 @@ public class NavigationManager {
         transaction.commit();
     }
 
-    public void showMainActivityFragment() {
-        showFragment(MainFragment.newInstance(), false);
+    public void showMainActivityFragment(boolean gridView) {
+        showFragment(MainFragment.newInstance(gridView), false);
     }
 
     public void sendToItemDetailsActivity(Datum networkResponse) {

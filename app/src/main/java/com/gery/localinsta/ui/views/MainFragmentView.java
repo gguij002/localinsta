@@ -10,7 +10,7 @@ import io.realm.RealmResults;
 
 public interface MainFragmentView extends BaseView {
 
-    void setUpRecyclerView(RealmResults<Datum> inboxItems);
+    void setUpRecyclerView(RealmResults<Datum> inboxItems, boolean gridView);
 
     void instasLoaded();
 }
