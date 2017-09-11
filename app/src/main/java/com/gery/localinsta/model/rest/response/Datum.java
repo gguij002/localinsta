@@ -1,9 +1,6 @@
 
 package com.gery.localinsta.model.rest.response;
 
-import android.animation.ObjectAnimator;
-
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

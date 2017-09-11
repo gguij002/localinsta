@@ -1,6 +1,5 @@
 package com.gery.localinsta.ui.presenters;
 
-import com.gery.localinsta.managers.PreferencesManager;
 import com.gery.localinsta.ui.views.MainActivityView;
 
 /**

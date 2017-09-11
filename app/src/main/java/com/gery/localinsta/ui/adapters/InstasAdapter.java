@@ -4,7 +4,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gery.localinsta.model.rest.response.Datum;
-import com.gery.localinsta.model.rest.response.NetworkResponse;
 import com.gery.localinsta.ui.adapters.listener.ListItemClickListener;
 import com.gery.localinsta.ui.adapters.viewholders.InstasHolder;
 

@@ -17,7 +17,8 @@ import io.realm.RealmResults;
 
 public class MainFragment extends BaseFragment<MainFragmentPresenter> implements MainFragmentView {
 
-    @BindView(R.id.recycler_view) RecyclerView recyclerView;
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
     private InstasAdapter adapter;
 
     public static MainFragment newInstance() {
@@ -58,8 +59,7 @@ public class MainFragment extends BaseFragment<MainFragmentPresenter> implements
         return new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                if (dy < 0)
-                {
+                if (dy < 0) {
                     getPresenter().onScroll(layoutManager);
                 }
             }

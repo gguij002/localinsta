@@ -1,12 +1,10 @@
 package com.gery.localinsta.managers;
 
 import com.gery.localinsta.model.rest.response.Datum;
-import com.gery.localinsta.model.rest.response.NetworkResponse;
 
 import java.util.List;
 
 import io.realm.Realm;
-import io.realm.RealmList;
 import io.realm.RealmResults;
 import io.realm.Sort;
 

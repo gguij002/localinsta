@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 
 import io.realm.RealmObject;
 
-public class Location extends RealmObject{
+public class Location extends RealmObject {
 
     @SerializedName("latitude")
     @Expose

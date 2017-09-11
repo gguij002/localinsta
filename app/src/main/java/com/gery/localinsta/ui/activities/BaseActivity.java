@@ -1,13 +1,11 @@
 package com.gery.localinsta.ui.activities;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.gery.localinsta.R;
 import com.gery.localinsta.managers.NavigationManager;
 import com.gery.localinsta.ui.callbacks.ErrorCallback;
 import com.gery.localinsta.ui.callbacks.LoadingCallback;
@@ -16,7 +14,6 @@ import com.gery.localinsta.ui.views.BaseView;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import io.realm.Realm;
 import retrofit2.Response;
 
 /**

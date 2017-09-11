@@ -19,8 +19,10 @@ import butterknife.BindView;
 
 public class MainActivity extends BaseActivity<MainActivityPresenter> implements MainActivityView {
 
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.location_text) TextView locationText;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.location_text)
+    TextView locationText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,7 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
 
     public void requestInstagramAuth() {
         String clientToken = getString(R.string.insta_client_token);
-        String url = "https://api.instagram.com/oauth/authorize/?client_id="+clientToken+"&redirect_uri=http://localmoments.com&response_type=token";
+        String url = "https://api.instagram.com/oauth/authorize/?client_id=" + clientToken + "&redirect_uri=http://localmoments.com&response_type=token";
         navigationManager.openUrl(url);
     }
 

@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 
 import io.realm.RealmObject;
 
-public class User extends RealmObject{
+public class User extends RealmObject {
 
     @SerializedName("id")
     @Expose

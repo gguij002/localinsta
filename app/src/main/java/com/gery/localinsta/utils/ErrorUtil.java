@@ -28,7 +28,7 @@ public class ErrorUtil {
     public static String getBody(Response<?> response) {
         String errors = null;
         try {
-            errors =  response.errorBody().string();
+            errors = response.errorBody().string();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,7 +1,6 @@
 package com.gery.localinsta.ui.views;
 
 import com.gery.localinsta.model.rest.response.Datum;
-import com.gery.localinsta.model.rest.response.NetworkResponse;
 
 import io.realm.RealmResults;
 
