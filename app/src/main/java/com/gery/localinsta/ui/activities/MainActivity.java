@@ -65,7 +65,7 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
     }
 
     public void authTokenIsAlreadySet() {
-        NavigationManager.newInstance(this).showMainActivityFragment(false);
+        NavigationManager.newInstance(this).showMainActivityFragment(true);
     }
 
     @Override

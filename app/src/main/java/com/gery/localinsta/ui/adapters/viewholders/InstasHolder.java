@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -18,10 +19,6 @@ import butterknife.ButterKnife;
 import io.reactivex.annotations.Nullable;
 
 import static com.gery.localinsta.ui.adapters.InstasAdapter.HEADER_VIEW;
-
-/**
- * Created by peterbekos on 5/16/17.
- */
 
 public class InstasHolder extends RecyclerView.ViewHolder {
 
@@ -62,6 +59,12 @@ public class InstasHolder extends RecyclerView.ViewHolder {
         } else {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
             view = inflater.inflate(R.layout.list_item_regular_view, parent, false);
+            View instaImage = view.findViewById(R.id.insta_image);
+
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) view.getLayoutParams();
+            params.setMargins(5, 50, 10, 0); //left, top, right, bottom
+            instaImage.setLayoutParams(params);
+
         }
         return view;
     }
